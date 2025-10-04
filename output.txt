@@ -1,0 +1,201 @@
+Fetching game data...
+
+Converting to GameData object...
+
+================================================================================
+COMPREHENSIVE GAME DATA EXTRACTION
+================================================================================
+
+📊 GAME INFO
+Game ID: 2025010086
+Date: 2025-10-03
+State: FINAL
+Venue: United Center, Chicago
+Start Time: 2025-10-04T00:00:00Z
+
+🏒 TEAMS
+Away: Minnesota Wild (MIN)
+  Score: 3
+  SOG: 27
+  Logo (Light): https://assets.nhle.com/logos/nhl/svg/MIN_light.svg
+  Logo (Dark): https://assets.nhle.com/logos/nhl/svg/MIN_dark.svg
+
+Home: Chicago Blackhawks (CHI)
+  Score: 2
+  SOG: 28
+  Logo (Light): https://assets.nhle.com/logos/nhl/svg/CHI_light.svg
+  Logo (Dark): https://assets.nhle.com/logos/nhl/svg/CHI_dark.svg
+
+⏰ GAME STATUS
+Period: 3 (REG)
+Time Remaining: 00:00
+Clock Running: False
+In Intermission: False
+
+👥 ROSTERS (with headshots)
+
+Home Team (20 players):
+  1. #17 Nick Foligno (L)
+     Headshot: https://assets.nhle.com/mugs/nhl/20252026/CHI/8473422.png
+  2. #5 Connor Murphy (D)
+     Headshot: https://assets.nhle.com/mugs/nhl/20252026/CHI/8476473.png
+  3. #86 Teuvo Teravainen (C)
+     Headshot: https://assets.nhle.com/mugs/nhl/20252026/CHI/8476882.png
+  ... and 17 more players
+
+Away Team (20 players):
+  1. #24 Zach Bogosian (D)
+     Headshot: https://assets.nhle.com/mugs/nhl/20252026/MIN/8474567.png
+  2. #46 Jared Spurgeon (D)
+     Headshot: https://assets.nhle.com/mugs/nhl/20252026/MIN/8474716.png
+  3. #90 Marcus Johansson (L)
+     Headshot: https://assets.nhle.com/mugs/nhl/20252026/MIN/8475149.png
+  ... and 17 more players
+
+⚽ GOALS (5 total)
+
+1. 1st @ 06:25 - CHI
+   Scorer: F. Nazar (#8483493)
+   Assists: T. Bertuzzi, T. Teravainen
+   Strength: ev | Shot: wrist
+   Score: 0-1
+   🎥 Highlight: https://nhl.com/video/min-chi-nazar-scores-goal-against-filip-gustavsson-6381753090112
+   🎥 Highlight (FR): https://nhl.com/fr/video/min-chi-nazar-marque-un-but-contre-filip-gustavsson-6381753688112
+
+2. 1st @ 10:04 - CHI
+   Scorer: N. Foligno (#8473422)
+   Assists: S. Rinzel, N. Allan
+   Strength: ev | Shot: tip-in
+   Score: 0-2
+   🎥 Highlight: https://nhl.com/video/min-chi-foligno-scores-goal-against-filip-gustavsson-6381756256112
+   🎥 Highlight (FR): https://nhl.com/fr/video/min-chi-foligno-marque-un-but-contre-filip-gustavsson-6381754889112
+
+3. 2nd @ 02:29 - MIN
+   Scorer: V. Tarasenko (#8475765)
+   Assists: M. Boldy, Z. Buium
+   Strength: pp | Shot: wrist
+   Score: 1-2
+   🎥 Highlight: https://nhl.com/video/min-chi-tarasenko-scores-ppg-against-spencer-knight-6381779755112
+   🎥 Highlight (FR): https://nhl.com/fr/video/min-chi-tarasenko-marque-un-but-en-a-n-contre-spencer-knight-6381779759112
+
+4. 2nd @ 09:13 - MIN
+   Scorer: J. Eriksson Ek (#8478493)
+   Assists: M. Boldy, Z. Buium
+   Strength: pp | Shot: deflected
+   Score: 2-2
+   🎥 Highlight: https://nhl.com/video/min-chi-eriksson-ek-scores-ppg-against-spencer-knight-6381787166112
+   🎥 Highlight (FR): https://nhl.com/fr/video/min-chi-eriksson-ek-marque-un-but-en-a-n-contre-spencer-knight-6381788359112
+
+5. 2nd @ 18:48 - MIN
+   Scorer: R. Hartman (#8477451)
+   Assists: K. Kaprizov, M. Rossi
+   Strength: pp | Shot: wrist
+   Score: 3-2
+   🎥 Highlight: https://nhl.com/video/min-chi-hartman-scores-ppg-against-spencer-knight-6381797860112
+   🎥 Highlight (FR): https://nhl.com/fr/video/min-chi-hartman-marque-un-but-en-a-n-contre-spencer-knight-6381797967112
+
+🚨 PENALTIES (11 total)
+1. 1st @ 17:49 - MIN
+   L. Ohgren - interference (2min) (drawn by Frank Nazar)
+2. 2nd @ 01:41 - CHI
+   A. Burakovsky - tripping (2min) (drawn by R. Hartman)
+3. 2nd @ 04:23 - CHI
+   N. Allan - high-sticking (2min) (drawn by K. Kaprizov)
+4. 2nd @ 06:41 - MIN
+   J. Middleton - roughing (2min) (drawn by C. Murphy)
+5. 2nd @ 06:41 - CHI
+   I. Mikheyev - roughing (2min) (drawn by M. Boldy)
+6. 2nd @ 07:56 - CHI
+    - too-many-men-on-the-ice (2min) [served by S. Lafferty]
+7. 2nd @ 10:43 - MIN
+   Y. Trenin - roughing (2min) (drawn by C. Murphy)
+8. 2nd @ 13:29 - MIN
+   Zeev Buium - holding (2min) (drawn by L. Slaggert)
+9. 2nd @ 16:58 - CHI
+   Sam Rinzel - tripping (2min) (drawn by M. Johansson)
+10. 3rd @ 11:33 - MIN
+   J. Eriksson Ek - roughing (2min) (drawn by W. Kaiser)
+11. 3rd @ 11:33 - CHI
+   W. Kaiser - roughing (2min) (drawn by J. Eriksson Ek)
+
+⭐ THREE STARS
+1. R. Hartman (MIN) - R
+   Stats: 1G, 0A = 1P
+   🖼️  Headshot: https://assets.nhle.com/mugs/nhl/20252026/MIN/8477451.png
+2. J. Eriksson Ek (MIN) - C
+   Stats: 1G, 0A = 1P
+   🖼️  Headshot: https://assets.nhle.com/mugs/nhl/20252026/MIN/8478493.png
+3. V. Tarasenko (MIN) - R
+   Stats: 1G, 0A = 1P
+   🖼️  Headshot: https://assets.nhle.com/mugs/nhl/20252026/MIN/8475765.png
+
+📈 TEAM STATISTICS
+Shots: 27-28
+Hits: 22-16
+Blocked Shots: 9-6
+Giveaways: 10-18
+Takeaways: 3-1
+PIM: 10-10
+Faceoff %: 71.2%-45.7%
+
+🏅 TOP SCORERS
+1. M. Boldy - 0G, 2A = 2P
+   +/-: +0, SOG: 2, Hits: 1, TOI: 19:15
+2. Z. Buium - 0G, 2A = 2P
+   +/-: +0, SOG: 3, Hits: 0, TOI: 19:13
+3. N. Foligno - 1G, 0A = 1P
+   +/-: +1, SOG: 2, Hits: 1, TOI: 14:38
+4. T. Bertuzzi - 0G, 1A = 1P
+   +/-: +1, SOG: 2, Hits: 1, TOI: 17:32
+5. T. Teravainen - 0G, 1A = 1P
+   +/-: +1, SOG: 1, Hits: 0, TOI: 21:08
+
+🥅 GOALIE STATISTICS
+
+MIN:
+  F. Gustavsson (#32)
+    Saves: 26/28 (0.929)
+    GA: 2 | TOI: 60:00
+    Decision: W
+    EV: 21/23 | PP: 4/4 | SH: 1/1
+
+CHI:
+  S. Knight (#30)
+    Saves: 24/27 (0.889)
+    GA: 3 | TOI: 57:22
+    Decision: L
+    EV: 21/21 | PP: 3/6 | SH: 0/0
+
+📺 BROADCASTS (2 networks)
+  CHSN (Home - US)
+  FDSNNO (Away - US)
+
+📋 EVENTS SUMMARY
+Total events captured: 186
+Event breakdown:
+  shot-on-goal: 50
+  hit: 38
+  giveaway: 28
+  missed-shot: 21
+  blocked-shot: 18
+  penalty: 11
+  goal: 5
+  takeaway: 4
+  delayed-penalty: 4
+  period-start: 3
+  period-end: 3
+  game-end: 1
+
+🎯 SAMPLE EVENTS:
+
+First goal event:
+  1st @ 06:25 - goal
+  Details: {'xCoord': -80, 'yCoord': 5, 'zoneCode': 'O', 'shotType': 'wrist', 'scoringPlayerId': 8483493, 'scoringPlayerTotal': 4, 'assist1PlayerId': 8477479, 'assist1PlayerTotal': 3, 'assist2PlayerId': 8476882, 'assist2PlayerTotal': 3, 'eventOwnerTeamId': 16, 'goalieInNetId': 8479406, 'awayScore': 0, 'homeScore': 1, 'highlightClipSharingUrl': 'https://nhl.com/video/min-chi-nazar-scores-goal-against-filip-gustavsson-6381753090112', 'highlightClipSharingUrlFr': 'https://nhl.com/fr/video/min-chi-nazar-marque-un-but-contre-filip-gustavsson-6381753688112', 'highlightClip': 6381753090112, 'highlightClipFr': 6381753688112, 'discreteClip': 6381752982112, 'discreteClipFr': 6381753680112}
+
+First hit event:
+  1st @ 00:33
+  Location: (91, -22) in zone O
+
+================================================================================
+EXTRACTION COMPLETE!
+================================================================================

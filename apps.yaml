@@ -1,0 +1,127 @@
+# /config/appdaemon/apps/apps.yaml
+
+nhl_text_templates:
+  module: nhl_notifications_texts
+  class: NhlNotificationTexts
+  log_level: DEBUG
+  templates:
+    goal_title: "🚨 {my_team_name_upper}! 🚨"
+    goal_body: "<b>{score_line}</b><br>{time_line}<br>{goal_line}{assist_line_section}"
+    goal_tts: "{goal_tts_sentence}"
+
+    opponent_goal_title: "🥅 Opponent Goal: {opp_team_name}"
+    opponent_goal_body: "<b>{score_line}</b><br>{time_line}<br>{goal_line}{assist_line_section}"
+    opponent_goal_tts: "{goal_tts_sentence}"
+
+    penalty_title: "🚨 Penalty Called"
+    penalty_body: "<b>{player}</b> • {minutes_text} for <b>{penalty_name}</b> {details_block}<br>{time_line}"
+    penalty_tts: "Penalty called on {player} for {penalty_name}, {minutes_text}."
+
+    live_game_title: "🏒 Game is LIVE!"
+    live_game_body: "{my_team_full} vs {opp_team_full} is underway."
+
+    win_title: "🏒 Final Score"
+    win_body: "<b>{my_team_name}</b> defeat <b>{opp_team_name}</b>, {my_team_score}-{opp_team_score}."
+    win_tts: "The {my_team_name} win {my_team_score} to {opp_team_score}."
+
+    controls_title: "🏒 NHL Controls Updated"
+    controls_body: "Celebration status is now: <b>{status_text}</b>."
+
+    preset_change_title: "🏒 Tracking {new_preset}"
+    preset_change_body: "Goal Lights: <b>{lights_status}</b> | Goal Horn: <b>{horn_status}</b> | TTS: <b>{tts_status}</b>"
+
+nhl_celebrations:
+  module: nhl_goal_app
+  class: NhlGoalCelebrations
+  log_level: DEBUG
+
+  goal_event_name: "nhl_goal_event_appdaemon"
+  opponent_goal_event_name: "nhl_opponent_goal_event"
+  team_win_event_name: "nhl_team_win_event"
+  tts_trigger_event_name: "nhl_celebration_tts_trigger"
+
+  horn_enabled_boolean: "input_boolean.nhl_goal_horn_enabled"
+  lights_enabled_boolean: "input_boolean.nhl_goal_lights_enabled"
+
+  # TTS
+  tts_enabled_boolean: "input_boolean.nhl_tts_enabled"
+  tts_service: "tts.google_translate_say"
+  tts_language: "en"
+  tts_volume_input_number: "input_number.nhl_tts_volume"
+
+  horn_volume_input_number: "input_number.nhl_goal_horn_volume"
+  media_player_horn: "media_player.basement_2"
+  horn_media_base_path: "media-source://media_source/local/"
+  horn_filename_suffix: " Goal Horn.mp3"
+  horn_base_duration_seconds: 21
+  horn_fade_out_duration_seconds: 3
+  horn_fade_step_interval_seconds: 1
+
+  light_group: "group.nhl_lightshow_lights"
+  lightshow_target_total_duration_seconds: 25
+
+nhl_game_notifications:
+  module: nhl_notifications_app
+  class: NhlGameNotifications
+  log_level: DEBUG
+  dashboard_sensor_entity_id: sensor.nhl_selected_game_data_ad
+  nhl_api_sensor_entity_id: sensor.nhl_api_active_team
+  pushover_main_notifier: notify.nhlos
+  dev_notifier_target: "persistent_dev_log"
+  team_notification_preset_select: input_select.team_goal_preset
+  horn_enabled_boolean_for_preset_notif: input_boolean.nhl_goal_horn_enabled
+  lights_enabled_boolean_for_preset_notif: input_boolean.nhl_goal_lights_enabled
+  tts_enabled_boolean_for_preset_notif: input_boolean.nhl_tts_enabled
+  texts_app: nhl_text_templates
+
+  test_notification_boolean: input_boolean.nhl_test_notification
+  test_opponent_goal_boolean: input_boolean.nhl_test_opponent_goal
+  test_team_win_boolean: input_boolean.nhl_test_team_win
+
+  goal_event_to_fire: "nhl_goal_event_appdaemon"
+  opponent_goal_event_to_fire: "nhl_opponent_goal_event"
+  team_win_event_to_fire: "nhl_team_win_event"
+
+  celebrate_win_only_if_home: true
+
+  coalesce_goal_seconds: 1.3
+  coalesce_penalty_seconds: 2.0
+  suppress_after_scoreboard_goal_seconds: 5
+
+  broadcast_delay_input_number: input_number.nhl_broadcast_delay_seconds
+  broadcast_delay_seconds: 0
+
+nhl_dashboard_manager_app:
+  module: nhl_dashboard_manager
+  class: NhlDashboardManager
+  log_level: DEBUG
+  team_notification_preset_select: input_select.team_goal_preset
+  ha_sensor_entity_id: sensor.nhl_selected_game_data_ad
+  nhl_api_sensor_entity_id: sensor.nhl_api_active_team
+  refresh_interval_live: 5
+  refresh_interval_upcoming: 60
+  refresh_interval_off: 300
+  refresh_interval_error: 30
+
+nhl_calendar_publisher_icloud:
+  module: nhl_calendar_icloud
+  class: NhlCalendarIcloud
+  log_level: DEBUG
+
+  team_notification_preset_select: input_select.team_goal_preset
+
+  icloud_username: rosado4713@gmail.com
+  icloud_app_password: rsfm-lnft-pipe-mmfb
+  icloud_calendar_name: "NHL Team Schedule"
+
+  days_ahead: 21
+  sync_interval_minutes: 360
+  event_duration_minutes_default: 150
+  include_networks: true
+  include_venue: true
+  summary_prefix: ""
+  location_is_venue: true
+  clear_on_team_change: true
+
+  sync_state_sensor_entity_id: sensor.nhl_calendar_sync_state
+  test_sync_boolean: input_boolean.nhl_test_calendar_sync

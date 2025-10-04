@@ -1,0 +1,398 @@
+type: custom:button-card
+entity: sensor.nhl_selected_game_data_ad
+triggers_update:
+  - sensor.nhl_selected_game_data_ad
+  - sensor.nhl_api_active_team
+show_name: false
+show_icon: false
+show_state: false
+styles:
+  card:
+    - border-radius: 16px
+    - padding: 0
+    - overflow: hidden
+    - border: none
+    - background: transparent
+    - box-shadow: none
+  grid:
+    - grid-template-areas: "'sb'"
+    - grid-template-columns: 1fr
+    - grid-template-rows: auto
+custom_fields:
+  sb: |
+    [[[
+      // ═══════════════════════════════════════════════════════════════════
+      // DATA EXTRACTION (v4.0.4)
+      // ═══════════════════════════════════════════════════════════════════
+      const a = entity?.attributes || {};
+      const state = (entity?.state || '').toUpperCase();
+      const fallback = "https://assets.nhle.com/logos/nhl/svg/NHL_light.svg";
+      
+      // Team data
+      const home = {
+        name: a.home_name || "Home",
+        abbr: (a.home_abbr || "HME").toUpperCase(),
+        logo: a.home_logo_dark || a.home_logo || fallback,
+        score: Number.isFinite(+a.home_score) ? +a.home_score : 0,
+        sog: a.home_sog
+      };
+      
+      const away = {
+        name: a.away_name || "Away",
+        abbr: (a.away_abbr || "AWY").toUpperCase(),
+        logo: a.away_logo_dark || a.away_logo || fallback,
+        score: Number.isFinite(+a.away_score) ? +a.away_score : 0,
+        sog: a.away_sog
+      };
+      
+      // Game state
+      const isLive = state === "LIVE";
+      const isFinal = state === "FINAL";
+      const isUpcoming = ["UPCOMING","SCHEDULED","SCHEDULED_PAST"].includes(state);
+      const isNoGame = state === "NO GAME SCHEDULED";
+      const inIntermission = a.in_intermission === true;
+      
+      // Clock & period (pre-formatted in v4.0.3)
+      const periodOrd = a.period_ord || "";
+      const timeRemaining = a.time_remaining || "--:--";
+      const clockRunning = a.clock_running === true;
+      
+      // Status badge text
+      let statusText = state.replaceAll("_", " ");
+      let statusColor = "#475569";
+      
+      if (isLive) {
+        statusText = inIntermission ? `END ${periodOrd}`.trim() : periodOrd || "LIVE";
+        statusColor = "#EF4444";
+      } else if (isFinal) {
+        statusText = "FINAL";
+        statusColor = "#64748B";
+      } else if (isUpcoming) {
+        statusText = "UPCOMING";
+        statusColor = "#3B82F6";
+      } else if (isNoGame) {
+        statusText = "NO GAME";
+        statusColor = "#475569";
+      }
+      
+      // Primary display line
+      let primaryLine = "";
+      if (isUpcoming || isNoGame) {
+        try {
+          if (a.game_start_time_utc) {
+            const dt = new Date(a.game_start_time_utc);
+            const today = new Date();
+            const isToday = dt.toDateString() === today.toDateString();
+            const time = dt.toLocaleTimeString(undefined, {hour:'numeric', minute:'2-digit'});
+            const date = dt.toLocaleDateString(undefined, {weekday:'short', month:'short', day:'numeric'});
+            primaryLine = isToday ? `Today · ${time}` : `${date} · ${time}`;
+          } else {
+            primaryLine = a.venue || "Schedule TBD";
+          }
+        } catch(e) {
+          primaryLine = a.venue || "Schedule TBD";
+        }
+      } else if (inIntermission) {
+        primaryLine = "INTERMISSION";
+      } else {
+        primaryLine = timeRemaining;
+      }
+      
+      // Broadcast info
+      const broadcasts = a.national_broadcasts || [];
+      const broadcastText = broadcasts.length > 0 ? broadcasts.join(" • ") : "";
+      
+      // Shots on goal
+      const shotsText = (home.sog != null && away.sog != null) 
+        ? `SOG: ${away.abbr} ${away.sog} · ${home.abbr} ${home.sog}`
+        : "";
+      
+      // Last goal (v4.0.4 - with assists)
+      let lastGoalText = "";
+      const goals = a.goals || [];
+      if (goals.length > 0) {
+        const recent = goals[0];
+        const scorer = recent.scorer_name || "Unknown";
+        const assists = recent.assists || [];
+        const assistNames = assists.map(a => a.name || a).filter(Boolean);
+        const strength = recent.strength || "";
+        const team = recent.team_abbrev || "";
+        
+        lastGoalText = team ? `${team}: ${scorer}` : scorer;
+        if (assistNames.length > 0) {
+          lastGoalText += ` (${assistNames.join(", ")})`;
+        }
+        if (strength) {
+          lastGoalText += ` · ${strength}`;
+        }
+      }
+      
+      // Venue
+      const venueText = a.venue || "";
+      
+      // Last update
+      let updateTime = "";
+      try {
+        if (a.last_api_update_utc) {
+          const d = new Date(a.last_api_update_utc);
+          updateTime = d.toLocaleTimeString(undefined, {hour:'2-digit', minute:'2-digit'});
+        }
+      } catch(e) {}
+      
+      // ═══════════════════════════════════════════════════════════════════
+      // RENDER
+      // ═══════════════════════════════════════════════════════════════════
+      return `
+        <style>
+          .scoreboard {
+            display: flex;
+            flex-direction: column;
+            background: #1a1d23;
+            border-radius: 16px;
+            border: 1px solid #2a2f38;
+            overflow: hidden;
+          }
+          
+          /* Header */
+          .sb-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+            background: #14161a;
+            border-bottom: 1px solid #2a2f38;
+          }
+          
+          .status-badge {
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            background: ${statusColor}20;
+            color: ${statusColor};
+            border: 1px solid ${statusColor}40;
+          }
+          
+          ${isLive && clockRunning ? `
+          @keyframes pulse-badge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+          }
+          .status-badge {
+            animation: pulse-badge 2s ease-in-out infinite;
+          }
+          ` : ''}
+          
+          .venue-text {
+            font-size: 12px;
+            color: #94a3b8;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          
+          /* Main scoreboard */
+          .sb-main {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 24px;
+            padding: 28px 24px;
+          }
+          
+          .team-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+          }
+          
+          .team-logo {
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #252932;
+            border-radius: 14px;
+            border: 1px solid #2a2f38;
+          }
+          
+          .team-logo img {
+            max-width: 70px;
+            max-height: 70px;
+            object-fit: contain;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+          }
+          
+          .team-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #e2e8f0;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
+          }
+          
+          .team-abbr {
+            display: none;
+            font-size: 18px;
+            font-weight: 800;
+            color: #94a3b8;
+          }
+          
+          /* Center column */
+          .sb-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            min-width: 140px;
+          }
+          
+          .score-display {
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: ${isLive ? '#EF4444' : '#e2e8f0'};
+            white-space: nowrap;
+          }
+          
+          .clock-display {
+            padding: 8px 16px;
+            background: #252932;
+            border-radius: 10px;
+            border: 1px solid #2a2f38;
+            font-size: 13px;
+            font-weight: 600;
+            color: #cbd5e1;
+            white-space: nowrap;
+          }
+          
+          /* Meta info */
+          .sb-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 0 20px 16px;
+            font-size: 12px;
+            color: #94a3b8;
+          }
+          
+          .meta-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+          
+          .meta-label {
+            font-weight: 600;
+            color: #64748b;
+            min-width: 80px;
+          }
+          
+          /* Footer */
+          .sb-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            background: #14161a;
+            border-top: 1px solid #2a2f38;
+            font-size: 11px;
+            color: #64748b;
+          }
+          
+          .update-time {
+            opacity: 0.8;
+          }
+          
+          /* Responsive */
+          @media (max-width: 640px) {
+            .sb-main { 
+              grid-template-columns: 1fr auto 1fr;
+              gap: 16px;
+              padding: 24px 20px;
+            }
+            .team-logo { width: 76px; height: 76px; }
+            .team-logo img { max-width: 56px; max-height: 56px; }
+            .score-display { font-size: 40px; }
+            .sb-center { min-width: 120px; }
+          }
+          
+          @media (max-width: 480px) {
+            .sb-main { gap: 12px; padding: 20px 16px; }
+            .team-logo { width: 64px; height: 64px; }
+            .team-logo img { max-width: 48px; max-height: 48px; }
+            .team-name { display: none; }
+            .team-abbr { display: block; }
+            .score-display { font-size: 36px; letter-spacing: 1px; }
+            .sb-center { min-width: 100px; }
+            .clock-display { font-size: 12px; padding: 7px 12px; }
+            .venue-text { font-size: 11px; }
+          }
+        </style>
+        
+        <div class="scoreboard">
+          <!-- Header -->
+          <div class="sb-header">
+            <div class="status-badge">${statusText}</div>
+            ${venueText ? `<div class="venue-text">${venueText}</div>` : ''}
+          </div>
+          
+          <!-- Main scoreboard -->
+          <div class="sb-main">
+            <!-- Away team -->
+            <div class="team-side">
+              <div class="team-logo">
+                <img src="${away.logo}" onerror="this.src='${fallback}'" alt="${away.name}">
+              </div>
+              <div class="team-name">${away.name}</div>
+              <div class="team-abbr">${away.abbr}</div>
+            </div>
+            
+            <!-- Center (score + clock) -->
+            <div class="sb-center">
+              ${!isUpcoming && !isNoGame ? `
+                <div class="score-display">${away.score} – ${home.score}</div>
+              ` : ''}
+              <div class="clock-display">${primaryLine}</div>
+            </div>
+            
+            <!-- Home team -->
+            <div class="team-side">
+              <div class="team-logo">
+                <img src="${home.logo}" onerror="this.src='${fallback}'" alt="${home.name}">
+              </div>
+              <div class="team-name">${home.name}</div>
+              <div class="team-abbr">${home.abbr}</div>
+            </div>
+          </div>
+          
+          <!-- Meta information -->
+          ${shotsText || broadcastText || lastGoalText ? `
+          <div class="sb-meta">
+            ${shotsText ? `<div class="meta-row">${shotsText}</div>` : ''}
+            ${broadcastText ? `<div class="meta-row"><span class="meta-label">Broadcast</span>${broadcastText}</div>` : ''}
+            ${lastGoalText ? `<div class="meta-row"><span class="meta-label">Last Goal</span>${lastGoalText}</div>` : ''}
+          </div>
+          ` : ''}
+          
+          <!-- Footer -->
+          <div class="sb-footer">
+            <span>${isLive ? '🔴 Live GameCenter' : 'GameCenter'}</span>
+            ${updateTime ? `<span class="update-time">Updated ${updateTime}</span>` : ''}
+          </div>
+        </div>
+      `;
+    ]]]
+tap_action:
+  action: url
+  url_path: |
+    [[[
+      return entity?.attributes?.game_url || "https://www.nhl.com/gamecenter";
+    ]]]

@@ -1,0 +1,1278 @@
+selected_team_abbr: NSH
+selected_team_name: Nashville Predators
+game_state_api: CRIT
+national_broadcasts: []
+home_name: Predators
+home_abbr: NSH
+home_logo: https://assets.nhle.com/logos/nhl/svg/NSH_light.svg
+away_name: Hurricanes
+away_abbr: CAR
+away_logo: https://assets.nhle.com/logos/nhl/svg/CAR_light.svg
+period_ord: OT
+period_type: OT
+time_remaining: "03:48"
+in_intermission: false
+clock_running: true
+playoffs: {}
+series_summary: ""
+last_play: period-start
+last_event: {}
+goals:
+  - period_ord: 1st
+    time: "09:38"
+    team_abbrev: CAR
+    scorer_name: J. Martinook
+    assists:
+      - name: J. Staal
+      - name: P. Kochetkov
+    strength: ev
+    shot_type: wrist
+    highlight_url: >-
+      https://nhl.com/video/car-nsh-martinook-scores-goal-against-juuse-saros-6382045782112
+    highlight_url_fr: >-
+      https://nhl.com/fr/video/car-nsh-martinook-marque-un-but-contre-juuse-saros-6382043536112
+  - period_ord: 1st
+    time: "13:28"
+    team_abbrev: NSH
+    scorer_name: J. Marchessault
+    assists:
+      - name: F. Forsberg
+      - name: R. Josi
+    strength: pp
+    shot_type: slap
+    highlight_url: >-
+      https://nhl.com/video/car-nsh-marchessault-scores-ppg-against-pyotr-kochetkov-6382045800112
+    highlight_url_fr: >-
+      https://nhl.com/fr/video/car-nsh-marchessault-marque-un-but-en-a-n-contre-pyotr-kochetkov-6382045991112
+  - period_ord: 2nd
+    time: "04:59"
+    team_abbrev: NSH
+    scorer_name: T. Jost
+    assists:
+      - name: J. Barron
+      - name: J. Kemell
+    strength: ev
+    shot_type: backhand
+    highlight_url: >-
+      https://nhl.com/video/car-nsh-jost-scores-goal-against-pyotr-kochetkov-6382045955112
+    highlight_url_fr: >-
+      https://nhl.com/fr/video/car-nsh-jost-marque-un-but-contre-pyotr-kochetkov-6382045954112
+  - period_ord: 3rd
+    time: "14:57"
+    team_abbrev: CAR
+    scorer_name: S. Jarvis
+    assists:
+      - name: S. Aho
+    strength: ev
+    shot_type: backhand
+    highlight_url: >-
+      https://nhl.com/video/car-nsh-jarvis-scores-goal-against-juuse-saros-6382048748112
+    highlight_url_fr: >-
+      https://nhl.com/fr/video/car-nsh-jarvis-marque-un-but-contre-juuse-saros-6382049310112
+game_clock:
+  running: true
+  in_intermission: false
+  period: 4
+  period_ord: OT
+  period_type: OT
+  time_remaining: "03:48"
+powerplay_info:
+  strengthLabel: ""
+shots:
+  home: 24
+  away: 25
+faceoffs:
+  home: 0.651
+  away: 0.506
+blocked:
+  home: 11
+  away: 13
+hits:
+  home: 12
+  away: 13
+pim:
+  home: 4
+  away: 4
+officials: []
+broadcasters_by_market: []
+plays_feed:
+  - id: 9
+    type: period-start
+    period: 1st
+    periodOrd: 1st
+    time: "00:00"
+    desc: period-start
+  - id: 139
+    type: hit
+    period: 1st
+    periodOrd: 1st
+    time: "00:20"
+    team: 12
+    desc: hit
+  - id: 54
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "00:27"
+    team: 12
+    desc: shot-on-goal
+  - id: 59
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "00:30"
+    team: 12
+    desc: shot-on-goal
+  - id: 61
+    type: blocked-shot
+    period: 1st
+    periodOrd: 1st
+    time: "00:47"
+    team: 18
+    desc: blocked-shot
+  - id: 132
+    type: takeaway
+    period: 1st
+    periodOrd: 1st
+    time: "02:07"
+    team: 12
+    desc: takeaway
+  - id: 135
+    type: giveaway
+    period: 1st
+    periodOrd: 1st
+    time: "02:31"
+    team: 18
+    desc: giveaway
+  - id: 80
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "02:42"
+    team: 18
+    desc: shot-on-goal
+  - id: 85
+    type: blocked-shot
+    period: 1st
+    periodOrd: 1st
+    time: "02:58"
+    team: 12
+    desc: blocked-shot
+  - id: 180
+    type: hit
+    period: 1st
+    periodOrd: 1st
+    time: "03:03"
+    team: 12
+    desc: hit
+  - id: 185
+    type: hit
+    period: 1st
+    periodOrd: 1st
+    time: "03:08"
+    team: 12
+    desc: hit
+  - id: 173
+    type: giveaway
+    period: 1st
+    periodOrd: 1st
+    time: "05:02"
+    team: 18
+    desc: giveaway
+  - id: 182
+    type: takeaway
+    period: 1st
+    periodOrd: 1st
+    time: "05:17"
+    team: 12
+    desc: takeaway
+  - id: 216
+    type: hit
+    period: 1st
+    periodOrd: 1st
+    time: "05:43"
+    team: 18
+    desc: hit
+  - id: 226
+    type: hit
+    period: 1st
+    periodOrd: 1st
+    time: "05:49"
+    team: 18
+    desc: hit
+  - id: 127
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "06:13"
+    team: 18
+    desc: shot-on-goal
+  - id: 187
+    type: giveaway
+    period: 1st
+    periodOrd: 1st
+    time: "06:23"
+    team: 18
+    desc: giveaway
+  - id: 143
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "06:58"
+    team: 12
+    desc: shot-on-goal
+  - id: 151
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "07:16"
+    team: 18
+    desc: shot-on-goal
+  - id: 152
+    type: blocked-shot
+    period: 1st
+    periodOrd: 1st
+    time: "07:27"
+    team: 12
+    desc: blocked-shot
+  - id: 227
+    type: giveaway
+    period: 1st
+    periodOrd: 1st
+    time: "07:49"
+    team: 18
+    desc: giveaway
+  - id: 250
+    type: hit
+    period: 1st
+    periodOrd: 1st
+    time: "08:44"
+    team: 12
+    desc: hit
+  - id: 366
+    type: hit
+    period: 1st
+    periodOrd: 1st
+    time: "09:00"
+    team: 18
+    desc: hit
+  - id: 239
+    type: giveaway
+    period: 1st
+    periodOrd: 1st
+    time: "09:02"
+    team: 12
+    desc: giveaway
+  - id: 174
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "09:20"
+    team: 12
+    desc: shot-on-goal
+  - id: 251
+    type: goal
+    period: 1st
+    periodOrd: 1st
+    time: "09:38"
+    team: 12
+    desc: goal
+  - id: 395
+    type: hit
+    period: 1st
+    periodOrd: 1st
+    time: "10:04"
+    team: 12
+    desc: hit
+  - id: 197
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "10:40"
+    team: 18
+    desc: shot-on-goal
+  - id: 207
+    type: blocked-shot
+    period: 1st
+    periodOrd: 1st
+    time: "11:14"
+    team: 18
+    desc: blocked-shot
+  - id: 396
+    type: hit
+    period: 1st
+    periodOrd: 1st
+    time: "11:40"
+    team: 18
+    desc: hit
+  - id: 453
+    type: hit
+    period: 1st
+    periodOrd: 1st
+    time: "11:45"
+    team: 18
+    desc: hit
+  - id: 21
+    type: delayed-penalty
+    period: 1st
+    periodOrd: 1st
+    time: "12:14"
+    team: 12
+    desc: delayed-penalty
+  - id: 223
+    type: penalty
+    period: 1st
+    periodOrd: 1st
+    time: "12:16"
+    team: 12
+    desc: penalty
+  - id: 228
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "12:25"
+    team: 12
+    desc: shot-on-goal
+  - id: 401
+    type: blocked-shot
+    period: 1st
+    periodOrd: 1st
+    time: "12:44"
+    team: 18
+    desc: blocked-shot
+  - id: 236
+    type: penalty
+    period: 1st
+    periodOrd: 1st
+    time: "13:15"
+    team: 12
+    desc: penalty
+  - id: 240
+    type: goal
+    period: 1st
+    periodOrd: 1st
+    time: "13:28"
+    team: 18
+    desc: goal
+  - id: 459
+    type: takeaway
+    period: 1st
+    periodOrd: 1st
+    time: "13:49"
+    team: 12
+    desc: takeaway
+  - id: 246
+    type: missed-shot
+    period: 1st
+    periodOrd: 1st
+    time: "14:01"
+    team: 18
+    desc: missed-shot
+  - id: 359
+    type: missed-shot
+    period: 1st
+    periodOrd: 1st
+    time: "15:10"
+    team: 18
+    desc: missed-shot
+  - id: 370
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "15:59"
+    team: 18
+    desc: shot-on-goal
+  - id: 371
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "16:00"
+    team: 18
+    desc: shot-on-goal
+  - id: 470
+    type: giveaway
+    period: 1st
+    periodOrd: 1st
+    time: "16:21"
+    team: 18
+    desc: giveaway
+  - id: 472
+    type: takeaway
+    period: 1st
+    periodOrd: 1st
+    time: "16:34"
+    team: 12
+    desc: takeaway
+  - id: 473
+    type: hit
+    period: 1st
+    periodOrd: 1st
+    time: "16:54"
+    team: 18
+    desc: hit
+  - id: 23
+    type: delayed-penalty
+    period: 1st
+    periodOrd: 1st
+    time: "17:07"
+    team: 18
+    desc: delayed-penalty
+  - id: 392
+    type: penalty
+    period: 1st
+    periodOrd: 1st
+    time: "17:20"
+    team: 18
+    desc: penalty
+  - id: 398
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "17:55"
+    team: 12
+    desc: shot-on-goal
+  - id: 400
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "18:15"
+    team: 12
+    desc: shot-on-goal
+  - id: 501
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "18:52"
+    team: 18
+    desc: shot-on-goal
+  - id: 464
+    type: shot-on-goal
+    period: 1st
+    periodOrd: 1st
+    time: "18:58"
+    team: 18
+    desc: shot-on-goal
+  - id: 27
+    type: period-end
+    period: 1st
+    periodOrd: 1st
+    time: "20:00"
+    desc: period-end
+  - id: 477
+    type: period-start
+    period: 2nd
+    periodOrd: 2nd
+    time: "00:00"
+    desc: period-start
+  - id: 616
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "00:08"
+    team: 12
+    desc: giveaway
+  - id: 478
+    type: blocked-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "00:19"
+    team: 18
+    desc: blocked-shot
+  - id: 485
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "00:42"
+    team: 18
+    desc: shot-on-goal
+  - id: 489
+    type: missed-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "00:49"
+    team: 12
+    desc: missed-shot
+  - id: 647
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "01:03"
+    team: 18
+    desc: giveaway
+  - id: 493
+    type: penalty
+    period: 2nd
+    periodOrd: 2nd
+    time: "01:15"
+    team: 18
+    desc: penalty
+  - id: 497
+    type: blocked-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "01:21"
+    team: 12
+    desc: blocked-shot
+  - id: 498
+    type: missed-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "01:33"
+    team: 12
+    desc: missed-shot
+  - id: 499
+    type: blocked-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "01:39"
+    team: 12
+    desc: blocked-shot
+  - id: 587
+    type: hit
+    period: 2nd
+    periodOrd: 2nd
+    time: "02:27"
+    team: 18
+    desc: hit
+  - id: 598
+    type: hit
+    period: 2nd
+    periodOrd: 2nd
+    time: "03:33"
+    team: 12
+    desc: hit
+  - id: 607
+    type: hit
+    period: 2nd
+    periodOrd: 2nd
+    time: "03:46"
+    team: 12
+    desc: hit
+  - id: 659
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "03:53"
+    team: 12
+    desc: giveaway
+  - id: 661
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "04:02"
+    team: 12
+    desc: giveaway
+  - id: 581
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "04:26"
+    team: 18
+    desc: shot-on-goal
+  - id: 608
+    type: hit
+    period: 2nd
+    periodOrd: 2nd
+    time: "04:42"
+    team: 12
+    desc: hit
+  - id: 583
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "04:49"
+    team: 18
+    desc: shot-on-goal
+  - id: 584
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "04:57"
+    team: 18
+    desc: shot-on-goal
+  - id: 403
+    type: goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "04:59"
+    team: 18
+    desc: goal
+  - id: 685
+    type: takeaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "05:04"
+    team: 18
+    desc: takeaway
+  - id: 700
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "05:27"
+    team: 12
+    desc: giveaway
+  - id: 618
+    type: hit
+    period: 2nd
+    periodOrd: 2nd
+    time: "05:36"
+    team: 12
+    desc: hit
+  - id: 593
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "05:55"
+    team: 12
+    desc: shot-on-goal
+  - id: 602
+    type: blocked-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "06:23"
+    team: 12
+    desc: blocked-shot
+  - id: 635
+    type: hit
+    period: 2nd
+    periodOrd: 2nd
+    time: "06:44"
+    team: 12
+    desc: hit
+  - id: 715
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "07:07"
+    team: 12
+    desc: giveaway
+  - id: 611
+    type: missed-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "07:07"
+    team: 18
+    desc: missed-shot
+  - id: 613
+    type: missed-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "07:21"
+    team: 18
+    desc: missed-shot
+  - id: 404
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "07:32"
+    team: 18
+    desc: shot-on-goal
+  - id: 405
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "07:33"
+    team: 18
+    desc: shot-on-goal
+  - id: 660
+    type: hit
+    period: 2nd
+    periodOrd: 2nd
+    time: "08:09"
+    team: 18
+    desc: hit
+  - id: 719
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "08:10"
+    team: 12
+    desc: giveaway
+  - id: 626
+    type: blocked-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "08:36"
+    team: 18
+    desc: blocked-shot
+  - id: 629
+    type: blocked-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "08:51"
+    team: 18
+    desc: blocked-shot
+  - id: 630
+    type: blocked-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "09:04"
+    team: 18
+    desc: blocked-shot
+  - id: 637
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "09:40"
+    team: 12
+    desc: shot-on-goal
+  - id: 642
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "10:01"
+    team: 12
+    desc: shot-on-goal
+  - id: 670
+    type: hit
+    period: 2nd
+    periodOrd: 2nd
+    time: "10:35"
+    team: 12
+    desc: hit
+  - id: 732
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "10:40"
+    team: 12
+    desc: giveaway
+  - id: 651
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "10:48"
+    team: 18
+    desc: shot-on-goal
+  - id: 653
+    type: blocked-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "10:57"
+    team: 12
+    desc: blocked-shot
+  - id: 736
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "11:00"
+    team: 18
+    desc: giveaway
+  - id: 406
+    type: missed-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "11:03"
+    team: 12
+    desc: missed-shot
+  - id: 662
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "11:09"
+    team: 12
+    desc: shot-on-goal
+  - id: 667
+    type: blocked-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "11:28"
+    team: 12
+    desc: blocked-shot
+  - id: 760
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "11:52"
+    team: 18
+    desc: giveaway
+  - id: 765
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "12:04"
+    team: 12
+    desc: giveaway
+  - id: 672
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "12:10"
+    team: 18
+    desc: shot-on-goal
+  - id: 679
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "12:27"
+    team: 18
+    desc: shot-on-goal
+  - id: 683
+    type: blocked-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "12:31"
+    team: 18
+    desc: blocked-shot
+  - id: 778
+    type: takeaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "13:02"
+    team: 12
+    desc: takeaway
+  - id: 694
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "13:22"
+    team: 12
+    desc: shot-on-goal
+  - id: 695
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "13:28"
+    team: 12
+    desc: shot-on-goal
+  - id: 698
+    type: blocked-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "13:31"
+    team: 12
+    desc: blocked-shot
+  - id: 699
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "13:34"
+    team: 12
+    desc: shot-on-goal
+  - id: 714
+    type: hit
+    period: 2nd
+    periodOrd: 2nd
+    time: "13:39"
+    team: 18
+    desc: hit
+  - id: 782
+    type: takeaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "13:52"
+    team: 18
+    desc: takeaway
+  - id: 703
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "14:23"
+    team: 12
+    desc: shot-on-goal
+  - id: 783
+    type: takeaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "14:27"
+    team: 18
+    desc: takeaway
+  - id: 784
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "14:30"
+    team: 18
+    desc: giveaway
+  - id: 785
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "14:34"
+    team: 12
+    desc: giveaway
+  - id: 709
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "14:46"
+    team: 12
+    desc: shot-on-goal
+  - id: 727
+    type: shot-on-goal
+    period: 2nd
+    periodOrd: 2nd
+    time: "15:51"
+    team: 12
+    desc: shot-on-goal
+  - id: 786
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "16:35"
+    team: 12
+    desc: giveaway
+  - id: 787
+    type: giveaway
+    period: 2nd
+    periodOrd: 2nd
+    time: "17:53"
+    team: 18
+    desc: giveaway
+  - id: 407
+    type: missed-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "19:04"
+    team: 18
+    desc: missed-shot
+  - id: 761
+    type: blocked-shot
+    period: 2nd
+    periodOrd: 2nd
+    time: "19:07"
+    team: 18
+    desc: blocked-shot
+scoring_detailed:
+  1st:
+    - team: CAR
+      scorer: J. Martinook
+      assists:
+        - J. Staal
+        - P. Kochetkov
+      time: "09:38"
+      strength: ev
+      shot_type: wrist
+      highlight_url: >-
+        https://nhl.com/video/car-nsh-martinook-scores-goal-against-juuse-saros-6382045782112
+    - team: NSH
+      scorer: J. Marchessault
+      assists:
+        - F. Forsberg
+        - R. Josi
+      time: "13:28"
+      strength: pp
+      shot_type: slap
+      highlight_url: >-
+        https://nhl.com/video/car-nsh-marchessault-scores-ppg-against-pyotr-kochetkov-6382045800112
+  2nd:
+    - team: NSH
+      scorer: T. Jost
+      assists:
+        - J. Barron
+        - J. Kemell
+      time: "04:59"
+      strength: ev
+      shot_type: backhand
+      highlight_url: >-
+        https://nhl.com/video/car-nsh-jost-scores-goal-against-pyotr-kochetkov-6382045955112
+  3rd:
+    - team: CAR
+      scorer: S. Jarvis
+      assists:
+        - S. Aho
+      time: "14:57"
+      strength: ev
+      shot_type: backhand
+      highlight_url: >-
+        https://nhl.com/video/car-nsh-jarvis-scores-goal-against-juuse-saros-6382048748112
+penalties_detailed:
+  1st:
+    - team: CAR
+      team_abbr: CAR
+      time: "12:16"
+      who: Charles Alexis Legault
+      name: holding
+      minutes: 2
+      drawn_by: Brady Martin
+    - team: CAR
+      team_abbr: CAR
+      time: "13:15"
+      who: S. Aho
+      name: delaying-game-puck-over-glass
+      minutes: 2
+      drawn_by: ""
+    - team: NSH
+      team_abbr: NSH
+      time: "17:20"
+      who: B. Skjei
+      name: tripping
+      minutes: 2
+      drawn_by: J. Blake
+  2nd:
+    - team: NSH
+      team_abbr: NSH
+      time: "01:15"
+      who: R. Josi
+      name: holding
+      minutes: 2
+      drawn_by: J. Blake
+error_message: ""
+last_api_update_utc: "2025-10-04T22:30:35.974245+00:00"
+attribution: Data provided by NHL API via AppDaemon
+last_changed: "2025-10-04T18:58:57.758519+00:00"
+last_reported: "2025-10-04T21:37:38.961034+00:00"
+last_updated: "2025-10-04T21:37:38.961034+00:00"
+context:
+  id: 01K6RJHD4HHCNFKD47EKTVWAQZ
+  user_id: 93a2608a9e2641e0bc1935703e9ad5b1
+three_stars: []
+on_ice:
+  home: []
+  away: []
+special_teams_state: Strength Unknown
+game_id: 2025010091
+game_start_time_utc: "2025-10-04T20:00:00Z"
+venue: Bridgestone Arena
+game_url: https://www.nhl.com/gamecenter/2025010091
+period: 4
+home_logo_dark: https://assets.nhle.com/logos/nhl/svg/NSH_dark.svg
+away_logo_dark: https://assets.nhle.com/logos/nhl/svg/CAR_dark.svg
+goalies:
+  - name: J. Annunen
+    team: NSH
+    sweater: 29
+    saves: 0
+    shots_against: 0
+    save_pct: 0
+    goals_against: 0
+    toi: "00:00"
+    decision: ""
+    headshot_url: https://assets.nhle.com/mugs/nhl/20242025/NSH/8481020.png
+  - name: J. Saros
+    team: NSH
+    sweater: 74
+    saves: 23
+    shots_against: 25
+    save_pct: 0.92
+    goals_against: 2
+    toi: "60:05"
+    decision: ""
+    headshot_url: https://assets.nhle.com/mugs/nhl/20242025/NSH/8477424.png
+  - name: P. Kochetkov
+    team: CAR
+    sweater: 52
+    saves: 22
+    shots_against: 24
+    save_pct: 0.917
+    goals_against: 2
+    toi: "59:54"
+    decision: ""
+    headshot_url: https://assets.nhle.com/mugs/nhl/20242025/CAR/8481611.png
+  - name: C. Primeau
+    team: CAR
+    sweater: 55
+    saves: 0
+    shots_against: 0
+    save_pct: 0
+    goals_against: 0
+    toi: "00:00"
+    decision: ""
+    headshot_url: https://assets.nhle.com/mugs/nhl/20242025/CAR/8480051.png
+home_roster:
+  - id: 8474600
+    name: Roman Josi
+    sweater: 59
+    position: D
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8474600.png
+  - id: 8475158
+    name: Ryan O'Reilly
+    sweater: 90
+    position: C
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8475158.png
+  - id: 8475287
+    name: Erik Haula
+    sweater: 56
+    position: L
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8475287.png
+  - id: 8476539
+    name: Jonathan Marchessault
+    sweater: 81
+    position: R
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8476539.png
+  - id: 8476869
+    name: Brady Skjei
+    sweater: 76
+    position: D
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8476869.png
+  - id: 8476887
+    name: Filip Forsberg
+    sweater: 9
+    position: L
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8476887.png
+  - id: 8477424
+    name: Juuse Saros
+    sweater: 74
+    position: G
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8477424.png
+  - id: 8477446
+    name: Michael McCarron
+    sweater: 47
+    position: C
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8477446.png
+  - id: 8478047
+    name: Michael Bunting
+    sweater: 58
+    position: L
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8478047.png
+  - id: 8479370
+    name: Tyson Jost
+    sweater: 17
+    position: C
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8479370.png
+  - id: 8480246
+    name: Nick Perbix
+    sweater: 48
+    position: D
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8480246.png
+  - id: 8481020
+    name: Justus Annunen
+    sweater: 29
+    position: G
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8481020.png
+  - id: 8481056
+    name: Spencer Stastney
+    sweater: 24
+    position: D
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8481056.png
+  - id: 8482062
+    name: Cole Smith
+    sweater: 36
+    position: R
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8482062.png
+  - id: 8482103
+    name: Ozzy Wiesblatt
+    sweater: 89
+    position: C
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8482103.png
+  - id: 8482111
+    name: Justin Barron
+    sweater: 20
+    position: D
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8482111.png
+  - id: 8482482
+    name: Adam Wilsby
+    sweater: 83
+    position: D
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8482482.png
+  - id: 8482768
+    name: Fedor Svechkov
+    sweater: 40
+    position: C
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8482768.png
+  - id: 8483465
+    name: Joakim Kemell
+    sweater: 25
+    position: R
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8483465.png
+  - id: 8485405
+    name: Brady Martin
+    sweater: 44
+    position: C
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/NSH/8485405.png
+away_roster:
+  - id: 8473533
+    name: Jordan Staal
+    sweater: 11
+    position: C
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8473533.png
+  - id: 8475791
+    name: Taylor Hall
+    sweater: 71
+    position: L
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8475791.png
+  - id: 8476422
+    name: Mike Reilly
+    sweater: 6
+    position: D
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8476422.png
+  - id: 8476873
+    name: Mark Jankowski
+    sweater: 77
+    position: L
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8476873.png
+  - id: 8476906
+    name: Shayne Gostisbehere
+    sweater: 4
+    position: D
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8476906.png
+  - id: 8476921
+    name: Jordan Martinook
+    sweater: 48
+    position: L
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8476921.png
+  - id: 8477478
+    name: William Carrier
+    sweater: 28
+    position: L
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8477478.png
+  - id: 8477940
+    name: Nikolaj Ehlers
+    sweater: 27
+    position: L
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8477940.png
+  - id: 8478427
+    name: Sebastian Aho
+    sweater: 20
+    position: C
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8478427.png
+  - id: 8478970
+    name: Jalen Chatfield
+    sweater: 5
+    position: D
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8478970.png
+  - id: 8480051
+    name: Cayden Primeau
+    sweater: 55
+    position: G
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8480051.png
+  - id: 8480336
+    name: Sean Walker
+    sweater: 26
+    position: D
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8480336.png
+  - id: 8480762
+    name: Eric Robinson
+    sweater: 50
+    position: L
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8480762.png
+  - id: 8480830
+    name: Andrei Svechnikov
+    sweater: 37
+    position: R
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8480830.png
+  - id: 8481611
+    name: Pyotr Kochetkov
+    sweater: 52
+    position: G
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8481611.png
+  - id: 8482093
+    name: Seth Jarvis
+    sweater: 24
+    position: C
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8482093.png
+  - id: 8482100
+    name: Alexander Nikishin
+    sweater: 21
+    position: D
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8482100.png
+  - id: 8482702
+    name: Logan Stankoven
+    sweater: 22
+    position: C
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8482702.png
+  - id: 8482809
+    name: Jackson Blake
+    sweater: 53
+    position: R
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8482809.png
+  - id: 8484428
+    name: Charles Alexis Legault
+    sweater: 62
+    position: D
+    headshot_url: https://assets.nhle.com/mugs/nhl/20252026/CAR/8484428.png
+home_score: 2
+home_sog: 24
+away_score: 2
+away_sog: 25
+last_event_id: 9
