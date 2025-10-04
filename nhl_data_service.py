@@ -2,8 +2,10 @@
 NHL Data Service - Comprehensive data fetching and conversion.
 Uses the new modular comprehensive converter.
 
-✅ LIVE MODE: Fetching current day's games
-✅ FIXED: Filters out finished games, handles alternate API structures
+Version: 4.1.0
+✅ FIXED: Better game state detection
+✅ FIXED: Handles multiple API response structures
+✅ FIXED: Only excludes FINAL/OFF games
 """
 
 import asyncio
@@ -206,9 +208,9 @@ class NHLDataService:
         """
         Get today's games, optionally filtered by team.
         
-        ✅ LIVE MODE: Fetching current day's games
-        ✅ FILTERS OUT: Finished games (FINAL, OFF)
-        ✅ HANDLES: Both gameWeek and direct games structures
+        ✅ FIXED: Improved game state detection
+        ✅ FIXED: Only filters out completely finished games
+        ✅ FIXED: Includes LIVE, CRIT, FUT, PRE states
         
         Args:
             team_abbrev: Optional team abbreviation to filter by
@@ -216,21 +218,29 @@ class NHLDataService:
         Returns:
             List of game dictionaries
         """
-        # LIVE MODE: Get today's date
         today = datetime.now().strftime("%Y-%m-%d")
         
         schedule = await self.get_schedule(date=today)
         
         games = []
         
-        # Try gameWeek structure first (common)
+        # ✅ VALID GAME STATES TO INCLUDE
+        # FUT = Future (scheduled)
+        # PRE = Pre-game (warmups)
+        # LIVE = Live game
+        # CRIT = Critical (final minutes)
+        # We only exclude FINAL and OFF
+        EXCLUDED_STATES = ['FINAL', 'OFF']
+        
+        # Try gameWeek structure first (most common)
         game_week = schedule.get('gameWeek', [])
         if game_week:
             for game_date in game_week:
                 for game in game_date.get('games', []):
-                    # ✅ SKIP FINISHED GAMES
                     game_state = game.get('gameState', '')
-                    if game_state in ['FINAL', 'OFF']:
+                    
+                    # ✅ ONLY SKIP COMPLETELY FINISHED GAMES
+                    if game_state in EXCLUDED_STATES:
                         continue
                     
                     # Filter by team if specified
@@ -242,11 +252,12 @@ class NHLDataService:
                     
                     games.append(game)
         
-        # Fallback: try direct 'games' key (alternate structure)
+        # Fallback: try direct 'games' key (alternate API structure)
         if not games and 'games' in schedule:
             for game in schedule.get('games', []):
                 game_state = game.get('gameState', '')
-                if game_state in ['FINAL', 'OFF']:
+                
+                if game_state in EXCLUDED_STATES:
                     continue
                 
                 if team_abbrev:
@@ -274,8 +285,8 @@ class NHLDataService:
         for game in games:
             game_state = game.get('gameState', '')
             
-            # Check if game is live
-            if game_state in ['LIVE', 'CRIT']:
+            # ✅ EXPANDED LIVE STATE DETECTION
+            if game_state in ['LIVE', 'CRIT', 'PRE']:
                 game_id = game.get('id')
                 if game_id:
                     return await self.get_game_data(game_id)
