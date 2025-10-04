@@ -1,0 +1,458 @@
+# configuration.yaml
+
+default_config:
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+# Make sure these files exist or are created in your /config directory
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+group: !include groups.yaml
+
+input_boolean:
+  nhl_goal_lights_enabled:
+    name: NHL Goal Lights Enabled
+    icon: mdi:lightbulb-on-outline
+    initial: true
+  nhl_goal_horn_enabled:
+    name: NHL Goal Horn Enabled
+    icon: mdi:volume-high
+    initial: true
+  nhl_test_notification: # For testing AppDaemon Pushover notifications
+    name: NHL Test Notification Trigger
+    icon: mdi:test-tube
+    initial: false
+  nhl_tts_enabled:
+    name: NHL TTS Announcements Enabled
+    icon: mdi:volume-high
+    initial: on  # Start enabled
+  nhl_test_opponent_goal:
+    name: NHL Test Opponent Goal
+    icon: mdi:shield-check
+  nhl_test_team_win:
+    name: NHL Test Team Win
+    icon: mdi:trophy
+  nhl_test_calendar_sync:
+    name: NHL Test Calendar Sync
+    icon: mdi:calendar-refresh
+    
+tts:
+  - platform: google_translate
+    service_name: google_translate_say
+    language: en  # English; change as needed
+    cache: true
+    cache_dir: /config/tts_cache
+
+input_select:
+  team_goal_preset:
+    name: Team Goal Preset
+    options:
+      - "Anaheim Ducks"
+      - "Arizona Coyotes" # Keep for historical data if sensor.coyotes exists, or remove if fully migrated to Utah
+      - "Boston Bruins"
+      - "Buffalo Sabres"
+      - "Calgary Flames"
+      - "Carolina Hurricanes"
+      - "Chicago Blackhawks"
+      - "Colorado Avalanche"
+      - "Columbus Blue Jackets"
+      - "Dallas Stars"
+      - "Detroit Red Wings"
+      - "Edmonton Oilers"
+      - "Florida Panthers"
+      - "Los Angeles Kings"
+      - "Minnesota Wild"
+      - "Montréal Canadiens" # Ensure this exact string matches in AppDaemon maps if used
+      - "Nashville Predators"
+      - "New Jersey Devils"
+      - "New York Islanders"
+      - "New York Rangers"
+      - "Ottawa Senators"
+      - "Philadelphia Flyers"
+      - "Pittsburgh Penguins"
+      - "San Jose Sharks"
+      - "Seattle Kraken"
+      - "St. Louis Blues"
+      - "Tampa Bay Lightning"
+      - "Toronto Maple Leafs"
+      - "Utah Mammoth" # New Utah team
+      - "Vancouver Canucks"
+      - "Vegas Golden Knights"
+      - "Washington Capitals"
+      - "Winnipeg Jets"
+      - "None" # Useful for disabling notifications/tracking for any team
+    initial: "Chicago Blackhawks"
+    icon: mdi:hockey-sticks
+
+input_number:
+  nhl_goal_horn_volume:
+    name: NHL Goal Horn Volume
+    icon: mdi:volume-high
+    min: 0
+    max: 1
+    step: 0.05
+    initial: 0.5
+    mode: slider
+
+  nhl_tts_volume:
+    name: NHL TTS Volume
+    min: 0
+    max: 1
+    step: 0.05
+    initial: 0.5
+    icon: mdi:volume-medium
+
+  nhl_broadcast_delay_seconds:
+    name: NHL Broadcast Delay (sec)
+    min: 0
+    max: 30
+    step: 0.1
+    unit_of_measurement: s
+    mode: slider
+
+input_text:
+  current_goal_horn: # This is set by 'Apply Team Color Preset' automation. AppDaemon v2.1 doesn't directly use it.
+    name: Current Goal Horn Team (UI Context)
+    initial: "Chicago Blackhawks"
+    icon: mdi:bullhorn-outline
+  debug_nhl_test_sensor_id: # Can be used by AppDaemon for specific sensor testing if you enhance test logic.
+    name: Debug NHL Test Sensor ID
+    initial: "sensor.golden_knights" # Example, should point to an nhl_api sensor
+    icon: mdi:bug-check-outline
+
+sensor: # Platform sensors using hass-nhlapi
+  - platform: nhl_api
+    team_abbrev: "ANA"
+    name: "Ducks" # Creates sensor.ducks
+    scan_interval: 1 # Very frequent, ensure your system can handle it. Consider 5-10s.
+  - platform: nhl_api
+    team_abbrev: "ARI" # For historical Arizona data if needed
+    name: "Coyotes" # Creates sensor.coyotes
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "UTA" # Abbreviation for the new Utah team
+    name: "Mammoth" # Creates sensor.mammoth (or your chosen name)
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "BOS"
+    name: "Bruins"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "BUF"
+    name: "Sabres"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "CGY"
+    name: "Flames"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "CAR"
+    name: "Hurricanes"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "CHI"
+    name: "Blackhawks"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "COL"
+    name: "Avalanche"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "CBJ"
+    name: "Blue Jackets" # Creates sensor.blue_jackets
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "DAL"
+    name: "Stars"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "DET"
+    name: "Red Wings" # Creates sensor.red_wings
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "EDM"
+    name: "Oilers"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "FLA"
+    name: "Panthers"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "LAK"
+    name: "Kings"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "MIN"
+    name: "Wild"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "MTL"
+    name: "Canadiens"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "NSH"
+    name: "Predators"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "NJD"
+    name: "Devils"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "NYI"
+    name: "Islanders"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "NYR"
+    name: "Rangers"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "OTT"
+    name: "Senators"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "PHI"
+    name: "Flyers"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "PIT"
+    name: "Penguins"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "SJS"
+    name: "Sharks"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "SEA"
+    name: "Kraken"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "STL"
+    name: "Blues"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "TBL"
+    name: "Lightning"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "TOR"
+    name: "Maple Leafs" # Creates sensor.maple_leafs
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "VAN"
+    name: "Canucks"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "VGK"
+    name: "Golden Knights" # Creates sensor.golden_knights
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "WSH"
+    name: "Capitals"
+    scan_interval: 1
+  - platform: nhl_api
+    team_abbrev: "WPG"
+    name: "Jets"
+    scan_interval: 1
+
+template:
+  - sensor:
+      - name: "NHL Team Colors Data"
+        unique_id: nhl_team_colors_data_main_sensor
+        state: "{{ states('input_select.team_goal_preset') }}" # Correctly references new input_select
+        icon: mdi:palette-swatch
+        attributes:
+          data: > # Your team color data (ensure team names here match input_select.team_goal_preset options)
+            {
+              "Anaheim Ducks":         [{"name":"Vibrant Orange","r":255,"g":102,"b":0},{"name":"Pure Black","r":1,"g":1,"b":1},{"name":"Bright Gold","r":255,"g":198,"b":0}],
+              "Arizona Coyotes":       [{"name":"Vibrant Red","r":140,"g":0,"b":0},{"name":"Pure Black","r":1,"g":1,"b":1},{"name":"Bright Sand","r":245,"g":222,"b":179}],
+              "Boston Bruins":         [{"name":"Bright Gold","r":255,"g":198,"b":0},{"name":"Pure Black","r":1,"g":1,"b":1},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "Buffalo Sabres":        [{"name":"Deep Blue","r":0,"g":38,"b":84},{"name":"Bright Gold","r":255,"g":198,"b":0},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "Calgary Flames":        [{"name":"Vibrant Red","r":206,"g":17,"b":38},{"name":"Bright Gold","r":255,"g":198,"b":0},{"name":"Pure Black","r":1,"g":1,"b":1}],
+              "Carolina Hurricanes":   [{"name":"Vibrant Red","r":206,"g":17,"b":38},{"name":"Pure Black","r":1,"g":1,"b":1},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "Chicago Blackhawks":    [{"name":"Vibrant Red","r":207,"g":10,"b":44},{"name":"Pure Black","r":1,"g":1,"b":1},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "Colorado Avalanche":    [{"name":"Deep Burgundy","r":111,"g":38,"b":61},{"name":"Bright Blue","r":0,"g":83,"b":155},{"name":"Pure Silver","r":192,"g":192,"b":192}],
+              "Columbus Blue Jackets": [{"name":"Deep Blue","r":0,"g":38,"b":84},{"name":"Vibrant Red","r":206,"g":17,"b":38},{"name":"Pure Silver","r":192,"g":192,"b":192}],
+              "Dallas Stars":          [{"name":"Vibrant Green","r":0,"g":133,"b":63},{"name":"Pure Silver","r":138,"g":141,"b":143},{"name":"Pure Black","r":1,"g":1,"b":1}],
+              "Detroit Red Wings":     [{"name":"Vibrant Red","r":206,"g":17,"b":38},{"name":"Pure White","r":255,"g":255,"b":255},{"name":"Dark Grey","r":64,"g":64,"b":64}],
+              "Edmonton Oilers":       [{"name":"Vibrant Orange","r":252,"g":76,"b":2},{"name":"Deep Blue","r":4,"g":30,"b":66},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "Florida Panthers":      [{"name":"Vibrant Red","r":200,"g":16,"b":46},{"name":"Deep Blue","r":4,"g":30,"b":66},{"name":"Bright Gold","r":185,"g":151,"b":91}],
+              "Los Angeles Kings":     [{"name":"Pure Black","r":1,"g":1,"b":1},{"name":"Pure Silver","r":162,"g":170,"b":173},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "Minnesota Wild":        [{"name":"Forest Green","r":0,"g":100,"b":0},{"name":"Vibrant Red","r":166,"g":25,"b":46},{"name":"Bright Gold","r":211,"g":190,"b":145}],
+              "Montréal Canadiens":    [{"name":"Vibrant Red","r":175,"g":30,"b":45},{"name":"Deep Blue","r":0,"g":30,"b":98},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "Nashville Predators":   [{"name":"Bright Gold","r":255,"g":184,"b":28},{"name":"Deep Navy","r":4,"g":30,"b":66},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "New Jersey Devils":     [{"name":"Vibrant Red","r":206,"g":17,"b":38},{"name":"Pure Black","r":1,"g":1,"b":1},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "New York Islanders":    [{"name":"Deep Blue","r":0,"g":83,"b":155},{"name":"Vibrant Orange","r":244,"g":125,"b":48},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "New York Rangers":      [{"name":"Bright Blue","r":0,"g":56,"b":168},{"name":"Vibrant Red","r":206,"g":17,"b":38},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "Ottawa Senators":       [{"name":"Vibrant Red","r":200,"g":16,"b":46},{"name":"Pure Black","r":1,"g":1,"b":1},{"name":"Bright Gold","r":192,"g":156,"b":81}],
+              "Philadelphia Flyers":   [{"name":"Vibrant Orange","r":247,"g":73,"b":2},{"name":"Pure Black","r":1,"g":1,"b":1},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "Pittsburgh Penguins":   [{"name":"Pure Black","r":1,"g":1,"b":1},{"name":"Bright Gold","r":252,"g":181,"b":20},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "San Jose Sharks":       [{"name":"Vibrant Teal","r":0,"g":107,"b":113},{"name":"Pure Black","r":1,"g":1,"b":1},{"name":"Vibrant Orange","r":234,"g":113,"b":37}],
+              "Seattle Kraken":        [{"name":"Deep Sea Blue","r":0,"g":22,"b":40},{"name":"Bright Ice Blue","r":153,"g":217,"b":234},{"name":"Vibrant Red","r":230,"g":57,"b":59}],
+              "St. Louis Blues":       [{"name":"Bright Blue","r":0,"g":47,"b":135},{"name":"Bright Yellow","r":252,"g":185,"b":19},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "Tampa Bay Lightning":   [{"name":"Deep Blue","r":0,"g":40,"b":104},{"name":"Pure White","r":255,"g":255,"b":255},{"name":"Pure Silver","r":138,"g":141,"b":143}],
+              "Toronto Maple Leafs":   [{"name":"Deep Blue","r":0,"g":32,"b":91},{"name":"Pure White","r":255,"g":255,"b":255},{"name":"Pure Silver","r":168,"g":170,"b":173}],
+              "Utah Mammoth":          [{"name":"Mountain Blue","r":80,"g":142,"b":208},{"name":"Rock Black","r":10,"g":10,"b":10},{"name":"Salt White","r":245,"g":245,"b":245}],
+              "Vancouver Canucks":     [{"name":"Deep Blue","r":0,"g":32,"b":91},{"name":"Vibrant Green","r":0,"g":132,"b":61},{"name":"Pure Silver","r":153,"g":153,"b":153}],
+              "Vegas Golden Knights":  [{"name":"Steel Grey","r":59,"g":66,"b":72},{"name":"Bright Gold","r":185,"g":151,"b":91},{"name":"Vibrant Red","r":196,"g":18,"b":48}],
+              "Washington Capitals":   [{"name":"Vibrant Red","r":200,"g":16,"b":46},{"name":"Deep Navy","r":4,"g":30,"b":66},{"name":"Pure White","r":255,"g":255,"b":255}],
+              "Winnipeg Jets":         [{"name":"Deep Navy","r":4,"g":30,"b":66},{"name":"Aviator Blue","r":0,"g":76,"b":151},{"name":"Pure Silver","r":168,"g":170,"b":173}]
+            }
+# NHL API Active Team Sensor
+  - sensor:
+      - name: "NHL API Active Team"
+        unique_id: nhl_api_active_team
+        state: "{{ states('sensor.nhl_selected_game_data_ad') }}"
+        attributes:
+          game_id: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'game_id') }}"
+          team_abbrev: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'selected_team_abbr') }}"
+          home_abbr: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'home_abbr') }}"
+          away_abbr: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'away_abbr') }}"
+          home_score: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'home_score') }}"
+          away_score: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'away_score') }}"
+          home_name: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'home_name') }}"
+          away_name: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'away_name') }}"
+          my_team_name: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'selected_team_name') }}"
+          game_state: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'game_state_api') }}"
+          current_period: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'period_ord') }}"
+          period_type: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'period_type') }}"
+          time_remaining: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'time_remaining') }}"
+          last_event: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'last_event') }}"
+          last_event_id: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'last_event_id') }}"
+          last_play: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'last_play') }}"
+          home_logo: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'home_logo') }}"
+          away_logo: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'away_logo') }}"
+          home_logo_dark: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'home_logo_dark') }}"
+          away_logo_dark: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'away_logo_dark') }}"
+          game_url: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'game_url') }}"
+          scoring_detailed: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'scoring_detailed') }}"
+          penalties_detailed: "{{ state_attr('sensor.nhl_selected_game_data_ad', 'penalties_detailed') }}"
+          
+          # Goal event tracking (critical for notifications!)
+          goal_event_id: >-
+            {% set last_event = state_attr('sensor.nhl_selected_game_data_ad', 'last_event') %}
+            {% if last_event and last_event.type == 'goal' %}
+              {{ state_attr('sensor.nhl_selected_game_data_ad', 'last_event_id') }}
+            {% else %}
+              {{ None }}
+            {% endif %}
+          
+          goal_team_abbrev: >-
+            {% set last_event = state_attr('sensor.nhl_selected_game_data_ad', 'last_event') %}
+            {% if last_event and last_event.type == 'goal' %}
+              {{ last_event.team | default('') }}
+            {% else %}
+              {{ None }}
+            {% endif %}
+          
+          scoring_player_name: >-
+            {% set last_event = state_attr('sensor.nhl_selected_game_data_ad', 'last_event') %}
+            {% if last_event and last_event.type == 'goal' %}
+              {{ last_event.scorer | default('Unknown') }}
+            {% else %}
+              {{ None }}
+            {% endif %}
+  - trigger:
+      # watch every NHL API sensor and the preset
+      - platform: state
+        entity_id:
+          - sensor.ducks
+          - sensor.coyotes
+          - sensor.mammoth
+          - sensor.bruins
+          - sensor.sabres
+          - sensor.flames
+          - sensor.hurricanes
+          - sensor.blackhawks
+          - sensor.avalanche
+          - sensor.blue_jackets
+          - sensor.stars
+          - sensor.red_wings
+          - sensor.oilers
+          - sensor.panthers
+          - sensor.kings
+          - sensor.wild
+          - sensor.canadiens
+          - sensor.predators
+          - sensor.devils
+          - sensor.islanders
+          - sensor.rangers
+          - sensor.senators
+          - sensor.flyers
+          - sensor.penguins
+          - sensor.sharks
+          - sensor.kraken
+          - sensor.blues
+          - sensor.lightning
+          - sensor.maple_leafs
+          - sensor.canucks
+          - sensor.golden_knights
+          - sensor.capitals
+          - sensor.jets
+      - platform: state
+        entity_id: input_select.team_goal_preset
+    sensor:
+      - name: "NHL API Active Team"
+        unique_id: nhl_api_active_team
+        state: >
+          {% set map = {
+            "Anaheim Ducks": "sensor.ducks",
+            "Arizona Coyotes": "sensor.coyotes",
+            "Boston Bruins": "sensor.bruins",
+            "Buffalo Sabres": "sensor.sabres",
+            "Calgary Flames": "sensor.flames",
+            "Carolina Hurricanes": "sensor.hurricanes",
+            "Chicago Blackhawks": "sensor.blackhawks",
+            "Colorado Avalanche": "sensor.avalanche",
+            "Columbus Blue Jackets": "sensor.blue_jackets",
+            "Dallas Stars": "sensor.stars",
+            "Detroit Red Wings": "sensor.red_wings",
+            "Edmonton Oilers": "sensor.oilers",
+            "Florida Panthers": "sensor.panthers",
+            "Los Angeles Kings": "sensor.kings",
+            "Minnesota Wild": "sensor.wild",
+            "Montréal Canadiens": "sensor.canadiens",
+            "Nashville Predators": "sensor.predators",
+            "New Jersey Devils": "sensor.devils",
+            "New York Islanders": "sensor.islanders",
+            "New York Rangers": "sensor.rangers",
+            "Ottawa Senators": "sensor.senators",
+            "Philadelphia Flyers": "sensor.flyers",
+            "Pittsburgh Penguins": "sensor.penguins",
+            "San Jose Sharks": "sensor.sharks",
+            "Seattle Kraken": "sensor.kraken",
+            "St. Louis Blues": "sensor.blues",
+            "Tampa Bay Lightning": "sensor.lightning",
+            "Toronto Maple Leafs": "sensor.maple_leafs",
+            "Utah Mammoth": "sensor.mammoth",
+            "Utah Hockey Club": "sensor.mammoth",
+            "Vancouver Canucks": "sensor.canucks",
+            "Vegas Golden Knights": "sensor.golden_knights",
+            "Washington Capitals": "sensor.capitals",
+            "Winnipeg Jets": "sensor.jets"
+          } %}
+          {% set preset = states('input_select.team_goal_preset') %}
+          {% set entity_id = map.get(preset) %}
+          {% if entity_id %}
+            {{ states(entity_id) }}
+          {% else %}
+            unavailable
+          {% endif %}
+        attributes: >
+          {% set map = { ... (same mapping as above) ... } %}
+          {% set preset = states('input_select.team_goal_preset') %}
+          {% set entity_id = map.get(preset) %}
+          {% if entity_id %}
+            {{ state_attr(entity_id, 'all') or state_attr(entity_id, 'attributes') or {} }}
+          {% else %}
+            {}
+          {% endif %}
+          
+  - trigger:
+      - platform: event
+        event_type: nhl_goal_event_appdaemon
+    sensor:
+      - name: "NHL Last Goal Snapshot"
+        state: "{{ trigger.event.data.team_name }}"
+        attributes: "{{ trigger.event.data }}"
